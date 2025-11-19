@@ -1,3 +1,10 @@
 #navbar {
     height: 100px;
 }
+
+.success{
+    transition: all ease-in 1s;
+}
+.error{
+    transition: all ease-in 1s;
+}

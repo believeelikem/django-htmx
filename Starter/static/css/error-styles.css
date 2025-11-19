@@ -1,0 +1,9 @@
+.no-error-username{
+    color: green;
+    display: block;
+}
+
+.error-username{
+    display: block;
+    color: red;
+}
