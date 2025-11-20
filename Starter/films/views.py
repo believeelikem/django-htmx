@@ -126,5 +126,18 @@ def detail(request,pk):
     }
     return render(request, "partials/film-detail.html", context)
 
+@login_required
 def films_partial(request):
     return render(request,"partials/film-list.html",{'films':UserFilms.objects.filter(user = request.user)})
+
+@login_required
+def upload_photo(request,pk):
+    user_film = get_object_or_404(UserFilms,pk = pk)
+    image = request.FILES.get("image")
+    user_film.film.image.save(image.name,image)
+    
+    context = {
+        "userfilm":user_film
+    }
+    return render(request, "partials/film-detail.html", context)
+

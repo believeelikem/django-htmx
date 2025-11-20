@@ -9,4 +9,20 @@
         hx-get="{% url 'film-list-partial' %}" 
         hx-target="#film-list">Your List</button>
     </div>
+    <div>
+        {% if userfilm.film.image %}
+           <img src="{{userfilm.film.image.url}}" style="width: 200px; max-height: 200px;" alt="">
+        {% else %}
+           <p> No photo here </p>
+        {% endif %}
+    </div>
+    <form action="" hx-encoding = "multipart/form-data" 
+    hx-post="{% url 'upload-photo' userfilm.pk %}"
+    hx-target = "#film-list">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="file" name ="image">
+        </div>
+        <button class="btn btn-success">Upload file</button>
+    </form>
 </div>
